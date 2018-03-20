@@ -58,9 +58,24 @@ public class PieChart extends JFrame {
       **/
     	 int a = tfValues[0];
     	 int b = tfValues[1];
+    	 int a2 = tfValues[2];
+    	 int b2 = tfValues[3];
+    	 int a3 = tfValues[4];
+    	 int b3 = tfValues[5];
+    	 int a4 = tfValues[6];
+    	 int b4 = tfValues[7];
+    	 
+    	 
     	 System.out.println(a);
-    	 dataset.setValue(a, "Profit", "Jane");
-    	 dataset.setValue(b, "Profit", "Lone");
+    	 dataset.addValue(a, "Impact", "Course1");
+    	 dataset.addValue(a2, "Impact", "Course2");
+    	 dataset.addValue(a3, "Impact", "Course3");
+    	 dataset.addValue(a4, "Impact", "Course4");
+    	 
+    	 dataset.addValue(b, "Ease", "Course1");
+    	 dataset.addValue(b2, "Ease", "Course2");
+    	 dataset.addValue(b3, "Ease", "Course3");
+    	 dataset.addValue(b4, "Ease", "Course4");
     	 
         return dataset;
 
