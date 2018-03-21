@@ -34,49 +34,73 @@ public class pen extends JFrame {
                    	return textField;
                    }
 		     public String getText1() {
-			        return textField.getText();
+			        if(textField.getText().equals("")) {
+			        	return "0";
+			        }  else
+		    	 return textField.getText();
 		           }
              public JTextField getTextField2() {
 			        return textField_1;
 		       }
 			 public String getText2() {
-					return textField_1.getText();
+				 if(textField_1.getText().equals("")) {
+			        	return "0";
+			        }  else	
+				 return textField_1.getText();
 				}
              public JTextField getTextField3() {
 					return textField_2;
 				}
 			 public String getText3() {
-					return textField_2.getText();
+				 if(textField_2.getText().equals("")) {
+			        	return "0";
+			        }  else		
+				 return textField_2.getText();
 						}
              public JTextField getTextField4() {
 					return textField_3;
 			  }
 		     public String getText4() {
-					return textField_3.getText();
+		    	 if(textField_3.getText().equals("")) {
+			        	return "0";
+			        }  else		
+		    	 return textField_3.getText();
 								}
              public JTextField getTextField5() {
 			        return textField_4;
 			    }
 			 public String getText5() {
-				    return textField_4.getText();
+				 if(textField_4.getText().equals("")) {
+			        	return "0";
+			        }  else	  
+				 return textField_4.getText();
 				}	
 			 public JTextField getTextField6() {
 			        return textField_5;
 			    }
 			 public String getText6() {
-				    return textField_5.getText();
+				 if(textField_5.getText().equals("")) {
+			        	return "0";
+			        }  else	   
+				 return textField_5.getText();
 				}
 			 public JTextField getTextField7() {
 			        return textField_6;
 			    }
 			 public String getText7() {
-				    return textField_6.getText();
+				 if(textField_6.getText().equals("")) {
+			        	return "0";
+			        }  else	   
+				 return textField_6.getText();
 				}	
 			 public JTextField getTextField8() {
 			        return textField_9;
 			    }
 			 public String getText8() {
-				    return textField_9.getText();
+				 if(textField_9.getText().equals("")) {
+			        	return "0";
+			        }  else	   
+				 return textField_9.getText();
 				}	
 		
 	public pen() {
