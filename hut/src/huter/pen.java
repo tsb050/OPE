@@ -3,7 +3,11 @@ package huter;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
+import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -12,6 +16,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.IOException;
+import javax.swing.JLabel;
 
 public class pen extends JFrame {
 	private JFrame frame;
@@ -80,42 +86,42 @@ public class pen extends JFrame {
 		frame.setSize(500,500);
 		
 		textField = new JTextField();
-		textField.setBounds(77, 35, 67, 35);
+		textField.setBounds(100, 63, 67, 35);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 	
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(227, 35, 67, 35);
+		textField_1.setBounds(242, 63, 67, 35);
 		frame.getContentPane().add(textField_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(77, 87, 67, 35);
+		textField_2.setBounds(100, 126, 67, 35);
 		frame.getContentPane().add(textField_2);
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		textField_3.setBounds(227, 91, 67, 35);
+		textField_3.setBounds(242, 126, 67, 35);
 		frame.getContentPane().add(textField_3);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(77, 137, 67, 35);
+		textField_4.setBounds(100, 196, 67, 35);
 		frame.getContentPane().add(textField_4);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(227, 137, 67, 35);
+		textField_5.setBounds(242, 196, 67, 35);
 		frame.getContentPane().add(textField_5);
 		
 		textField_6 = new JTextField();
 		textField_6.setColumns(10);
-		textField_6.setBounds(77, 196, 67, 35);
+		textField_6.setBounds(100, 268, 67, 35);
 		frame.getContentPane().add(textField_6);
 		
 		textField_9 = new JTextField();
-		textField_9.setBounds(227, 196, 67, 35);
+		textField_9.setBounds(242, 268, 67, 35);
 		frame.getContentPane().add(textField_9);
 		textField_9.setColumns(10);
 		
@@ -138,7 +144,7 @@ public class pen extends JFrame {
 				 tfValues[7] = Integer.parseInt(getText8());
 			
 				  
-				 PieChart demo = new PieChart("Comparison", "Which operating system are you using?",tfValues);
+				 PieChart demo = new PieChart("Graphical Representation", "Which operating system are you using?",tfValues);
 				    demo.pack();
 			        demo.setVisible(true);
 			        frame.dispose();
@@ -147,14 +153,8 @@ public class pen extends JFrame {
 			}	
 		
 		});
-		/**btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-		        PieChart demo = new PieChart("Comparison", "Which operating system are you using?");
-		        demo.pack();
-		        demo.setVisible(true);
-			}
-		});**/
-		btnNewButton.setBounds(61, 276, 107, 57);
+	
+		btnNewButton.setBounds(76, 368, 107, 57);
 		frame.getContentPane().add(btnNewButton);
 		
 		
@@ -163,9 +163,10 @@ public class pen extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 			
-				int[] tfValues = new int[20];
-				
-				 tfValues[0] = Integer.parseInt(getText1());
+				final DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
+			     int[] tfValues = new int[20];
+			      
+			     tfValues[0] = Integer.parseInt(getText1());
 				 tfValues[1] = Integer.parseInt(getText2());
 				 tfValues[2] = Integer.parseInt(getText3());
 				 tfValues[3] = Integer.parseInt(getText4());
@@ -173,20 +174,58 @@ public class pen extends JFrame {
 				 tfValues[5] = Integer.parseInt(getText6());
 				 tfValues[6] = Integer.parseInt(getText7());
 				 tfValues[7] = Integer.parseInt(getText8());
-			
-				  
-			
-			        frame.dispose();
-			      
+					 
+					 
+			     int a = tfValues[0];
+				 int b = tfValues[1];
+				 int a2 = tfValues[2];
+				 int b2 = tfValues[3];
+				 int a3 = tfValues[4];
+				 int b3 = tfValues[5];
+				 int a4 = tfValues[6];
+				 int b4 = tfValues[7];
+				 
+				 
+				 System.out.println(a);
+				 dataset.addValue(a, "Impact", "Course1");
+				 dataset.addValue(a2, "Impact", "Course2");
+				 dataset.addValue(a3, "Impact", "Course3");
+				 dataset.addValue(a4, "Impact", "Course4");
+				 
+				 dataset.addValue(b, "Ease", "Course1");
+				 dataset.addValue(b2, "Ease", "Course2");
+				 dataset.addValue(b3, "Ease", "Course3");
+				 dataset.addValue(b4, "Ease", "Course4");
+			     
+				 
+				 JFreeChart barChart = ChartFactory.createBarChart(
+			         "Graphical Representation", 
+			         "Category", "Score", 
+			         dataset,PlotOrientation.VERTICAL, 
+			         true, true, false);
+			         
+			      int width = 640;    /* Width of the image */
+			      int height = 480;   /* Height of the image */ 
+			      File BarChart = new File( "BarChart.jpeg" ); 
+			      try {
+					ChartUtilities.saveChartAsJPEG( BarChart , barChart , width , height );
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
-		btnNewButton_1.setBounds(224, 276, 113, 57);
+		btnNewButton_1.setBounds(227, 368, 113, 57);
 		frame.getContentPane().add(btnNewButton_1);
+		
+		JLabel lblNewLabel = new JLabel(" Chart Builder Window or JPEG");
+		lblNewLabel.setBounds(129, 11, 180, 41);
+		frame.getContentPane().add(lblNewLabel);
 	}
 	
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -198,5 +237,8 @@ public class pen extends JFrame {
 				}
 			}
 		});
+	
+		 
+		
 	}
 }
